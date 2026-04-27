@@ -1,4 +1,4 @@
-# CSCE652: Trickbot Defense PoC (Hooking + Injection)
+## CSCE652: Trickbot Defense PoC (Hooking + Injection)
 
 This project is a CSCE652 submission demonstrating a proof-of-concept defensive mechanism against Trickbot-like malware behavior.
 
@@ -11,7 +11,7 @@ The system uses API hooking and process injection to intercept and neutralize th
 
 ---
 
-## Repository Setup
+### Repository Setup
 
 **Clone the repository:**
 
@@ -55,3 +55,27 @@ This injector:
 3. Injects defense.dll
 4. Activates hooks inside the target process
 
+### Execution Instructions:
+
+The system must be executed using two separate ```bash cmd.exe``` windows.
+**Command Prompt 1 — Run the Malware (Target Process)**
+Start the test malware:
+```bash
+malware.exe
+```
+Keep this terminal running.
+
+**Command Prompt 2 — Run the Injector (Defense Module)**
+In a second terminal:
+```bash
+inject.exe
+```
+This will:
+1. Locate malware.exe
+2. Inject defense.dll
+3. Activate API hooks inside the target process
+
+**Notes:**
+1. This project is intended strictly for controlled lab environments and academic evaluation.
+2. The test malware is a benign proof-of-concept simulation and does not perform real malicious activity.
+3. The defense mechanism relies on runtime API hooking similar to MinHook.

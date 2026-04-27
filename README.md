@@ -29,8 +29,29 @@ x86_64-w64-mingw32-g++ -shared -o defense.dll \
     dllmain.cpp hooks.cpp buffer.c trampoline.c hook.c hde/hde64.c \
     -lws2_32 -lpsapi -static
 ```
-
 This generates defense.dll, which implements runtime API hooks for:
 
 1. Memory allocation APIs (e.g., VirtualAlloc)
 2. Network transmission APIs (e.g., send)
+
+Build the Test Malware (Controlled PoC Target):
+```bash
+x86_64-w64-mingw32-g++ inject.cpp -o inject.exe \
+    -lpsapi -static-libgcc -static-libstdc++
+```
+This program simulates malicious behavior:
+
+1. Allocates memory using VirtualAlloc
+2. Sends data over the network using send()
+
+Build the Injector:
+```bash
+x86_64-w64-mingw32-g++ inject.cpp -o inject.exe \
+    -lpsapi -static-libgcc -static-libstdc++
+```
+This injector:
+1. Locates the target process (malware.exe)
+2. Allocates memory in the target process
+3. Injects defense.dll
+4. Activates hooks inside the target process
+

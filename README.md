@@ -58,7 +58,9 @@ This injector:
 ### Execution Instructions:
 
 The system must be executed using two separate ```bash cmd.exe``` windows.
+
 **Command Prompt 1 — Run the Malware (Target Process)**
+
 Start the test malware:
 ```bash
 malware.exe
@@ -66,6 +68,7 @@ malware.exe
 Keep this terminal running.
 
 **Command Prompt 2 — Run the Injector (Defense Module)**
+
 In a second terminal:
 ```bash
 inject.exe

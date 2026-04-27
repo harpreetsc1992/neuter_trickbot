@@ -32,5 +32,5 @@ x86_64-w64-mingw32-g++ -shared -o defense.dll \
 
 This generates defense.dll, which implements runtime API hooks for:
 
-### Memory allocation APIs (e.g., VirtualAlloc)
-### Network transmission APIs (e.g., send)
+1. Memory allocation APIs (e.g., VirtualAlloc)
+2. Network transmission APIs (e.g., send)

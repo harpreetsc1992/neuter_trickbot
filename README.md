@@ -15,7 +15,7 @@ The system uses API hooking and process injection to intercept and neutralize th
 
 **Clone the repository:**
 
-```bash
+```
 git clone git@github.com:harpreetsc1992/neuter_trickbot.git
 # or
 git clone https://github.com/harpreetsc1992/neuter_trickbot.git
@@ -23,8 +23,8 @@ cd neuter_trickbot
 ```
 **Build Instructions:**
 
-All components are compiled using the MinGW-w64 toolchain (x86\_64-w64-mingw32-g++) - install with ```bash sudo apt install mingw-w64 ```.
-```bash
+All components are compiled using the MinGW-w64 toolchain (x86\_64-w64-mingw32-g++) - install with ```sudo apt install mingw-w64 ```.
+```
 x86_64-w64-mingw32-g++ -shared -o defense.dll \
     dllmain.cpp hooks.cpp buffer.c trampoline.c hook.c hde/hde64.c \
     -lws2_32 -lpsapi -static
@@ -35,7 +35,7 @@ This generates defense.dll, which implements runtime API hooks for:
 2. Network transmission APIs (e.g., send)
 
 **Build the Test Malware (Controlled PoC Target):**
-```bash
+```
 x86_64-w64-mingw32-g++ inject.cpp -o inject.exe \
     -lpsapi -static-libgcc -static-libstdc++
 ```
@@ -45,7 +45,7 @@ This program simulates malicious behavior:
 2. Sends data over the network using send()
 
 **Build the Injector:**
-```bash
+```
 x86_64-w64-mingw32-g++ inject.cpp -o inject.exe \
     -lpsapi -static-libgcc -static-libstdc++
 ```
@@ -57,12 +57,12 @@ This injector:
 
 ### Execution Instructions:
 
-The system must be executed using two separate ```bash cmd.exe``` windows.
+The system must be executed using two separate ```cmd.exe``` windows.
 
 **Command Prompt 1 — Run the Malware (Target Process)**
 
 Start the test malware:
-```bash
+```
 malware.exe
 ```
 Keep this terminal running.
@@ -70,7 +70,7 @@ Keep this terminal running.
 **Command Prompt 2 — Run the Injector (Defense Module)**
 
 In a second terminal:
-```bash
+```
 inject.exe
 ```
 This will:
